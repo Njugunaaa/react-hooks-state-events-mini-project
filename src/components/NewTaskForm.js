@@ -1,31 +1,30 @@
-// NewTaskForm.js
 import React, { useState } from "react";
 
 function NewTaskForm({ categories, onTaskFormSubmit }) {
   const [text, setText] = useState("");
   const [category, setCategory] = useState("Code");
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    const newTask = { text, category };
-    onTaskFormSubmit(newTask);
+    onTaskFormSubmit({ text, category });
     setText("");
     setCategory("Code");
-  };
+  }
 
   return (
     <form className="new-task-form" onSubmit={handleSubmit}>
-       <label htmlFor="task-text">Details</label>
+      <label htmlFor="task-text">Details</label>
       <input
-      id="task-text" // Ensure the id is unique and matches the label's "for"
+        id="task-text"
         type="text"
         placeholder="New task details"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
+
       <label htmlFor="category-select">Category</label>
       <select
-        id="category-select"  // Make sure this id matches the htmlFor in the label
+        id="category-select"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       >
@@ -37,6 +36,7 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
             </option>
           ))}
       </select>
+
       <input type="submit" value="Add task" />
     </form>
   );

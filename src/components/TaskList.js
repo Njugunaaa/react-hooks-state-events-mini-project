@@ -4,11 +4,11 @@ import Task from "./Task";
 function TaskList({ tasks, onDeleteTask }) {
   return (
     <div className="tasks">
-      {tasks.map((task) => (
+      {tasks.map((t) => (
         <Task
-          key={task.text}
-          text={task.text}
-          category={task.category}
+          key={t.text}
+          text={t.text}
+          category={t.category}
           onDelete={onDeleteTask}
         />
       ))}
